@@ -5,13 +5,13 @@ const readline = require("readline");
 const CONFIG = {
   MIN_WORD_LENGTH: 4,
   MAX_WORD_LENGTH: 15,
-  DEFAULT_TARGET_WORD_COUNT: 4000,
+  DEFAULT_TARGET_WORD_COUNT: 10,
   OUTPUT_FILE: "crossword-words.json",
 };
 
 const EXCLUDE_PATTERNS = [
   /^\p{Lu}/u,
-  /[^a-záéíóúüñ]/i,
+  /[^a-záéíóúü]/i,
   /(.)\1{2,}/,
 ];
 

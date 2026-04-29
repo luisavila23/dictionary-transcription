@@ -2,6 +2,7 @@ import os
 import re
 import json
 import time
+import unicodedata
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
 
@@ -155,6 +156,17 @@ def normalize_text(text: str) -> str:
     return text
 
 
+def normalize_spanish_word(word: str) -> str:
+    w = normalize_text(str(word)).lower()
+    if not w:
+        return ""
+    # Deterministic Spanish-friendly ASCII normalization.
+    w = w.replace("ñ", "n").replace("Ñ", "n").replace("ü", "u").replace("Ü", "u")
+    w = unicodedata.normalize("NFD", w)
+    w = "".join(ch for ch in w if unicodedata.category(ch) != "Mn")
+    return w
+
+
 def singular_plural_variants(word: str) -> List[str]:
     w = word.lower().strip()
     variants = {w}
@@ -302,6 +314,7 @@ def choose_details(word: str, category: str, description: str, original_details:
 
 def ensure_details_last(entry: Dict[str, Any]) -> Dict[str, Any]:
     finalized = dict(entry)
+    finalized["normalized-word"] = normalize_spanish_word(str(finalized.get("word", "")))
     existing_details = finalized.pop("details", "")
     finalized["details"] = clean_details(str(existing_details))
     if not finalized["details"]:

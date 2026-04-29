@@ -1,82 +1,92 @@
 [
   {
     "word": "amigo",
-    "hint": "Persona en quien se confía",
-    "description": "Es alguien cercano con quien se comparte un vínculo afectivo sin necesidad de lazos familiares.",
+    "hint": "Compañero de confianza",
+    "description": "Es una persona con la que se tiene un vínculo de afecto y lealtad sinceros.",
     "difficulty": "easy",
     "category": "other",
-    "details": "Los amigos suelen apoyarse y compartir experiencias. La amistad se basa en la confianza y el cariño mutuo."
+    "normalized-word": "amigo",
+    "details": "La amistad no depende de lazos familiares y se basa en el cariño desinteresado."
   },
   {
     "word": "domingo",
-    "hint": "Último día de la semana tradicional",
-    "description": "Es el día que sigue al sábado y antecede al lunes.",
+    "hint": "Día de descanso semanal",
+    "description": "Es el día de la semana que sigue al sábado y antecede al lunes.",
     "difficulty": "medium",
     "category": "other",
-    "details": "El domingo es considerado día de descanso en muchas culturas. Su nombre significa ‘día del Señor’ en latín."
+    "normalized-word": "domingo",
+    "details": "Para muchos es tradicionalmente el último día de la semana, aunque en algunas culturas se considera el primero."
   },
   {
     "word": "gurú",
-    "hint": "Guía espiritual en el hinduismo",
-    "description": "Es un maestro religioso que transmite enseñanzas y sabiduría.",
+    "hint": "Guía espiritual",
+    "description": "Es un maestro o líder espiritual en tradiciones como el hinduismo.",
     "difficulty": "easy",
     "category": "other",
-    "details": "En la tradición hindú, el gurú es fundamental para la iniciación espiritual. Su conocimiento se transmite a discípulos."
+    "normalized-word": "guru",
+    "details": "Originalmente un preceptor religioso, el término ahora se usa también para referirse a un experto en cualquier área."
   },
   {
     "word": "hiragana",
-    "hint": "Escritura japonesa de trazos curvos",
-    "description": "Es un silabario empleado para palabras nativas y elementos gramaticales del japonés.",
+    "hint": "Silabario japonés de trazos curvos",
+    "description": "Es uno de los sistemas de escritura japonesa, formado por caracteres de trazos suaves.",
     "difficulty": "medium",
     "category": "other",
-    "details": "El hiragana consta de 46 caracteres básicos. Se utiliza para escribir palabras japonesas y terminaciones verbales."
+    "normalized-word": "hiragana",
+    "details": "Se emplea para escribir palabras nativas y elementos gramaticales como partículas y desinencias."
   },
   {
     "word": "idioma",
-    "hint": "Sistema de signos para comunicarse",
-    "description": "Es un conjunto de símbolos y reglas que permite la comunicación entre personas.",
+    "hint": "Sistema de comunicación verbal",
+    "description": "Es un sistema estructurado de signos que sirve para expresar ideas y sentimientos.",
     "difficulty": "medium",
     "category": "other",
-    "details": "Cada comunidad desarrolla su propio idioma. Aprender idiomas amplía la comprensión cultural."
+    "normalized-word": "idioma",
+    "details": "Los idiomas pueden ser orales o escritos y permiten la interacción entre las personas de una comunidad."
   },
   {
     "word": "katakana",
-    "hint": "Silabario japonés para extranjerismos",
-    "description": "Es un sistema de escritura japonés utilizado para palabras de origen foráneo y nombres extranjeros.",
+    "hint": "Silabario para voces extranjeras",
+    "description": "Es un sistema de escritura japonés que se utiliza principalmente para términos de origen foráneo.",
     "difficulty": "medium",
     "category": "other",
-    "details": "El katakana es de trazos rectos y se usa también para destacar palabras. Tiene la misma cantidad de caracteres que el hiragana."
+    "normalized-word": "katakana",
+    "details": "Se caracteriza por sus trazos angulosos y se emplea para nombres propios y préstamos lingüísticos."
   },
   {
     "word": "mayo",
-    "hint": "Mes de las flores y la primavera",
-    "description": "Es un mes primaveral de 31 días ubicado entre abril y junio.",
+    "hint": "Mes de las flores",
+    "description": "Es el quinto mes del año en los calendarios juliano y gregoriano.",
     "difficulty": "easy",
     "category": "other",
-    "details": "Mayo marca el inicio de la temporada de flores. Es conocido por las celebraciones del Día del Trabajo."
+    "normalized-word": "mayo",
+    "details": "En el hemisferio norte marca el apogeo de la primavera y cuenta con 31 días."
   },
   {
     "word": "mouse",
-    "hint": "Dispositivo para mover el cursor",
-    "description": "Es un periférico de computadora que permite señalar y hacer clic en elementos de la pantalla.",
+    "hint": "Periférico para controlar el cursor",
+    "description": "Es un dispositivo manual que permite desplazar un puntero en la pantalla de la computadora.",
     "difficulty": "easy",
     "category": "other",
-    "details": "El mouse puede ser con cable o inalámbrico. Su nombre en inglés significa ratón por su forma."
+    "normalized-word": "mouse",
+    "details": "Suele tener botones y una rueda, y se desliza sobre una superficie plana para facilitar la navegación."
   },
   {
     "word": "omega",
     "hint": "Última letra del alfabeto griego",
-    "description": "Es la vigésima cuarta y última letra del alfabeto griego.",
+    "description": "Es la vigesimocuarta y última letra del alfabeto griego.",
     "difficulty": "easy",
     "category": "other",
-    "details": "Omega se usa en física para representar la resistencia eléctrica. En el alfabeto griego, omega significa ‘O grande’."
+    "normalized-word": "omega",
+    "details": "Representa el sonido de 'o' larga y en física simboliza la velocidad angular; en el cristianismo alude al fin."
   },
   {
     "word": "sustantivo",
-    "hint": "Palabra que designa seres u objetos",
-    "description": "Es la parte de la oración que sirve para nombrar personas, animales, cosas o conceptos.",
+    "hint": "Clase de palabra que nombra",
+    "description": "Es una categoría gramatical que sirve para designar personas, animales, objetos o ideas.",
     "difficulty": "hard",
     "category": "other",
-    "details": "Los sustantivos concuerdan con artículos y adjetivos. Se clasifican según su significado y forma."
+    "normalized-word": "sustantivo",
+    "details": "Los sustantivos pueden ser comunes o propios, y se clasifican también en concretos o abstractos."
   }
 ]
