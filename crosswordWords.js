@@ -5,7 +5,7 @@ const readline = require("readline");
 const CONFIG = {
   MIN_WORD_LENGTH: 4,
   MAX_WORD_LENGTH: 15,
-  DEFAULT_TARGET_WORD_COUNT: 10,
+  DEFAULT_TARGET_WORD_COUNT: 4000,
   OUTPUT_FILE: "crossword-words.json",
 };
 

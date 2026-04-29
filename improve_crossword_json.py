@@ -314,7 +314,7 @@ def choose_details(word: str, category: str, description: str, original_details:
 
 def ensure_details_last(entry: Dict[str, Any]) -> Dict[str, Any]:
     finalized = dict(entry)
-    finalized["normalized-word"] = normalize_spanish_word(str(finalized.get("word", "")))
+    finalized["normalizedWord"] = normalize_spanish_word(str(finalized.get("word", "")))
     existing_details = finalized.pop("details", "")
     finalized["details"] = clean_details(str(existing_details))
     if not finalized["details"]:
