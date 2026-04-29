@@ -1,0 +1,82 @@
+[
+  {
+    "word": "amigo",
+    "hint": "Persona en quien se confía",
+    "description": "Es alguien cercano con quien se comparte un vínculo afectivo sin necesidad de lazos familiares.",
+    "difficulty": "easy",
+    "category": "other",
+    "details": "Los amigos suelen apoyarse y compartir experiencias. La amistad se basa en la confianza y el cariño mutuo."
+  },
+  {
+    "word": "domingo",
+    "hint": "Último día de la semana tradicional",
+    "description": "Es el día que sigue al sábado y antecede al lunes.",
+    "difficulty": "medium",
+    "category": "other",
+    "details": "El domingo es considerado día de descanso en muchas culturas. Su nombre significa ‘día del Señor’ en latín."
+  },
+  {
+    "word": "gurú",
+    "hint": "Guía espiritual en el hinduismo",
+    "description": "Es un maestro religioso que transmite enseñanzas y sabiduría.",
+    "difficulty": "easy",
+    "category": "other",
+    "details": "En la tradición hindú, el gurú es fundamental para la iniciación espiritual. Su conocimiento se transmite a discípulos."
+  },
+  {
+    "word": "hiragana",
+    "hint": "Escritura japonesa de trazos curvos",
+    "description": "Es un silabario empleado para palabras nativas y elementos gramaticales del japonés.",
+    "difficulty": "medium",
+    "category": "other",
+    "details": "El hiragana consta de 46 caracteres básicos. Se utiliza para escribir palabras japonesas y terminaciones verbales."
+  },
+  {
+    "word": "idioma",
+    "hint": "Sistema de signos para comunicarse",
+    "description": "Es un conjunto de símbolos y reglas que permite la comunicación entre personas.",
+    "difficulty": "medium",
+    "category": "other",
+    "details": "Cada comunidad desarrolla su propio idioma. Aprender idiomas amplía la comprensión cultural."
+  },
+  {
+    "word": "katakana",
+    "hint": "Silabario japonés para extranjerismos",
+    "description": "Es un sistema de escritura japonés utilizado para palabras de origen foráneo y nombres extranjeros.",
+    "difficulty": "medium",
+    "category": "other",
+    "details": "El katakana es de trazos rectos y se usa también para destacar palabras. Tiene la misma cantidad de caracteres que el hiragana."
+  },
+  {
+    "word": "mayo",
+    "hint": "Mes de las flores y la primavera",
+    "description": "Es un mes primaveral de 31 días ubicado entre abril y junio.",
+    "difficulty": "easy",
+    "category": "other",
+    "details": "Mayo marca el inicio de la temporada de flores. Es conocido por las celebraciones del Día del Trabajo."
+  },
+  {
+    "word": "mouse",
+    "hint": "Dispositivo para mover el cursor",
+    "description": "Es un periférico de computadora que permite señalar y hacer clic en elementos de la pantalla.",
+    "difficulty": "easy",
+    "category": "other",
+    "details": "El mouse puede ser con cable o inalámbrico. Su nombre en inglés significa ratón por su forma."
+  },
+  {
+    "word": "omega",
+    "hint": "Última letra del alfabeto griego",
+    "description": "Es la vigésima cuarta y última letra del alfabeto griego.",
+    "difficulty": "easy",
+    "category": "other",
+    "details": "Omega se usa en física para representar la resistencia eléctrica. En el alfabeto griego, omega significa ‘O grande’."
+  },
+  {
+    "word": "sustantivo",
+    "hint": "Palabra que designa seres u objetos",
+    "description": "Es la parte de la oración que sirve para nombrar personas, animales, cosas o conceptos.",
+    "difficulty": "hard",
+    "category": "other",
+    "details": "Los sustantivos concuerdan con artículos y adjetivos. Se clasifican según su significado y forma."
+  }
+]
