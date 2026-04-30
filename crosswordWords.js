@@ -68,15 +68,15 @@ class WiktionaryParser {
     return true;
   }
 
-  extractSpanishSection(text) {
+  extractFrenchSection(text) {
     return text.match(
-      /(?:^|\n)==\s*(?:\{\{\s*lengua\s*\|\s*es\s*\}\}|español)\s*==\s*\n([\s\S]*?)(?=\n==[^=\n]+==\s*\n|$)/i,
+      /(?:^|\n)==\s*(?:\{\{\s*langue\s*\|\s*fr\s*\}\}|français|french)\s*==\s*\n([\s\S]*?)(?=\n==[^=\n]+==\s*\n|$)/i,
     );
   }
 
-  extractPOSSection(spanishSection) {
-    return spanishSection.match(
-      /(?:^|\n)={3,4}\s*\{\{\s*((?:sustantivo(?:\s+(?:masculino|femenino|propio))?|verbo(?:\s+\w+)?|adjetivo(?:\s+\w+)?|adverbio(?:\s+\w+)?|pronombre(?:\s+\w+)?|preposición(?:\s+\w+)?|conjunción(?:\s+\w+)?))[^}]*\|\s*es\b[^}]*\}\}\s*={3,4}\s*\n([\s\S]*?)(?=\n={3,4}\s*|$)/i,
+  extractPOSSection(frenchSection) {
+    return frenchSection.match(
+      /(?:^|\n)={3,4}\s*\{\{\s*S\s*\|\s*((?:nom(?:\s+propre)?|verbe|adjectif|adverbe|pronom|préposition|conjonction))\b[^}]*\|\s*fr\b[^}]*\}\}\s*={3,4}\s*\n([\s\S]*?)(?=\n={3,4}\s*|$)/i,
     );
   }
 
@@ -84,13 +84,13 @@ class WiktionaryParser {
     return (text.toLowerCase().match(/[a-záéíóúüñ]+/gi) || []).filter(Boolean);
   }
 
-  hasSpanishUsageExclusion(spanishSection) {
+  hasFrenchUsageExclusion(frenchSection) {
     return (
-      /\{\{(?:obsoleto|arcaico|desusado|raro|dialectal|informal|coloquial|anticuado)\b/i.test(
-        spanishSection,
+      /\{\{(?:vieilli|archaïque|désuet|rare|dialectal|familier|informel|argot|vulgaire)\|fr\}\}/i.test(
+        frenchSection,
       ) ||
-      /\{\{contexto\|[^}]*\b(?:obsoleto|arcaico|desusado|raro|dialectal|informal|coloquial|anticuado)\b/i.test(
-        spanishSection,
+      /\{\{(?:vieilli|archaïque|désuet|rare|dialectal|familier|informel|argot|vulgaire)\b/i.test(
+        frenchSection,
       )
     );
   }
@@ -282,16 +282,16 @@ class WiktionaryParser {
   parseWikitext(title, text) {
     if (!text || typeof text !== "string") return null;
 
-    const spanishMatch = this.extractSpanishSection(text);
-    if (!spanishMatch) return null;
+    const frenchMatch = this.extractFrenchSection(text);
+    if (!frenchMatch) return null;
 
-    const spanishSection = spanishMatch[1];
+    const frenchSection = frenchMatch[1];
 
-    if (this.hasSpanishUsageExclusion(spanishSection)) {
+    if (this.hasFrenchUsageExclusion(frenchSection)) {
       return null;
     }
 
-    const posMatch = this.extractPOSSection(spanishSection);
+    const posMatch = this.extractPOSSection(frenchSection);
     if (!posMatch) return null;
 
     const partOfSpeech = posMatch[1];

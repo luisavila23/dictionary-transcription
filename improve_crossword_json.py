@@ -33,13 +33,13 @@ FALLBACK_TO_ORIGINAL = True
 SYSTEM_PROMPT = """
 You write polished game-ready word content for crossword and educational word search apps.
 
-Your job is to improve weak dictionary-style text into natural, concise, mobile-friendly Spanish.
+Your job is to improve weak dictionary-style text into natural, concise, mobile-friendly French.
 
 You must always return valid JSON only.
 
 Writing style requirements:
 - Natural human wording
-- Clear simple Spanish
+- Clear simple French
 - Short, smooth, polished phrasing
 - Educational but easy to read
 - Great mobile UX copy
@@ -50,7 +50,7 @@ Field rules:
 - `hint`: short crossword-style clue, ideally 2 to 6 words
 - `description`: exactly 1 sentence, smooth and easy to understand
 - `details`: 1 or 2 short educational sentences with useful context
-- `hint`, `description`, and `details` must be written in natural Spanish.
+- `hint`, `description`, and `details` must be written in natural French.
 
 Critical safety rules:
 1. Never include the answer word in the hint.
@@ -70,17 +70,17 @@ Quality standard:
 
 Good example:
 {
-  "word": "marrón",
-  "hint": "Color del chocolate",
-  "description": "Es un color cálido y oscuro común en la madera, la tierra y el café.",
-  "details": "El marrón es frecuente en la naturaleza y puede variar desde tonos claros hasta tonos oscuros."
+  "word": "brun",
+  "hint": "Couleur du chocolat",
+  "description": "C'est une couleur chaude et sombre souvent vue dans le bois, la terre et le cafe.",
+  "details": "Le brun est frequent dans la nature et va des tons clairs aux tons fonces."
 }
 
 Bad example:
 {
-  "word": "mes",
-  "hint": "Período en que el año se divide históricamente",
-  "description": "Período en que se divide el año, históricamente basado en las fases de la luna."
+  "word": "mois",
+  "hint": "Periode en laquelle l'annee est divisee historiquement",
+  "description": "Periode en laquelle une annee est divisee, historiquement basee sur les phases de la lune."
 }
 
 The bad example is too mechanical, too literal, and not polished enough.
@@ -156,12 +156,11 @@ def normalize_text(text: str) -> str:
     return text
 
 
-def normalize_spanish_word(word: str) -> str:
+def normalize_french_word(word: str) -> str:
     w = normalize_text(str(word)).lower()
     if not w:
         return ""
-    # Deterministic Spanish-friendly ASCII normalization.
-    w = w.replace("ñ", "n").replace("Ñ", "n").replace("ü", "u").replace("Ü", "u")
+    w = w.replace("œ", "oe").replace("æ", "ae")
     w = unicodedata.normalize("NFD", w)
     w = "".join(ch for ch in w if unicodedata.category(ch) != "Mn")
     return w
@@ -241,9 +240,9 @@ def ensure_details(value: str, fallback_description: str) -> str:
 
     description = ensure_period(normalize_text(fallback_description))
     if description:
-        return f"{description} Este término se usa con frecuencia en juegos educativos de palabras."
+        return f"{description} Ce terme est souvent utilise dans des jeux educatifs de mots."
 
-    return "No hay contexto educativo adicional disponible."
+    return "Aucun contexte educatif supplementaire n'est disponible."
 
 
 def details_quality_score(text: str) -> int:
@@ -261,7 +260,7 @@ def details_quality_score(text: str) -> int:
     lowered = cleaned.lower()
     if "general educational context is not available" in lowered:
         score -= 100
-    if "no hay contexto educativo adicional disponible" in lowered:
+    if "aucun contexte educatif supplementaire n'est disponible" in lowered:
         score -= 100
 
     return score
@@ -287,14 +286,14 @@ def fallback_details_from_entry(word: str, category: str, description: str) -> s
     normalized_word = normalize_text(word)
 
     if normalized_description and normalized_category:
-        return f"{normalized_description} Este término se usa con frecuencia en juegos educativos de palabras de la categoría {normalized_category}."
+        return f"{normalized_description} Ce terme est souvent utilise dans des jeux educatifs de mots de la categorie {normalized_category}."
     if normalized_description:
-        return f"{normalized_description} Este término se usa con frecuencia en juegos educativos de palabras."
+        return f"{normalized_description} Ce terme est souvent utilise dans des jeux educatifs de mots."
     if normalized_category:
-        return f"Este término pertenece al vocabulario de {normalized_category} y aparece en juegos educativos de palabras."
+        return f"Ce terme appartient au vocabulaire de {normalized_category} et apparait dans des jeux educatifs de mots."
     if normalized_word:
-        return f"Este término se refiere a {normalized_word} y aparece con frecuencia en juegos educativos de palabras."
-    return "No hay contexto educativo adicional disponible."
+        return f"Ce terme se refere a {normalized_word} et apparait souvent dans des jeux educatifs de mots."
+    return "Aucun contexte educatif supplementaire n'est disponible."
 
 
 def choose_details(word: str, category: str, description: str, original_details: str, candidate_details: str) -> str:
@@ -314,7 +313,7 @@ def choose_details(word: str, category: str, description: str, original_details:
 
 def ensure_details_last(entry: Dict[str, Any]) -> Dict[str, Any]:
     finalized = dict(entry)
-    finalized["normalizedWord"] = normalize_spanish_word(str(finalized.get("word", "")))
+    finalized["normalizedWord"] = normalize_french_word(str(finalized.get("word", "")))
     existing_details = finalized.pop("details", "")
     finalized["details"] = clean_details(str(existing_details))
     if not finalized["details"]:
@@ -391,15 +390,15 @@ Return JSON only with this structure:
 Instructions:
 - Keep `index`, `word`, `difficulty`, and `category` unchanged.
 - Rewrite only `hint`, `description`, and `details`.
-- Input words and source content are in Spanish.
-- Final `hint`, `description`, and `details` must be in natural Spanish.
+- Input words and source content are in French.
+- Final `hint`, `description`, and `details` must be in natural French.
 - `hint` must be short, natural, and clue-like.
 - `description` must be exactly 1 sentence.
 - `details` must be 1 or 2 short educational sentences.
 - `hint` must not contain the answer word.
 - `description` must not contain the answer word.
 - Avoid awkward dictionary-style phrasing.
-- Use clear, polished, human-sounding Spanish.
+- Use clear, polished, human-sounding French.
 - Keep the meaning accurate.
 - Do not invent uncertain facts.
 - If the original entry is weak, improve it significantly for fluency and UX.
