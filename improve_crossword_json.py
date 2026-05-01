@@ -33,13 +33,13 @@ FALLBACK_TO_ORIGINAL = True
 SYSTEM_PROMPT = """
 You write polished game-ready word content for crossword and educational word search apps.
 
-Your job is to improve weak dictionary-style text into natural, concise, mobile-friendly French.
+Your job is to improve weak dictionary-style text into natural, concise, mobile-friendly Portuguese.
 
 You must always return valid JSON only.
 
 Writing style requirements:
 - Natural human wording
-- Clear simple French
+- Clear simple Portuguese
 - Short, smooth, polished phrasing
 - Educational but easy to read
 - Great mobile UX copy
@@ -50,7 +50,7 @@ Field rules:
 - `hint`: short crossword-style clue, ideally 2 to 6 words
 - `description`: exactly 1 sentence, smooth and easy to understand
 - `details`: 1 or 2 short educational sentences with useful context
-- `hint`, `description`, and `details` must be written in natural French.
+- `hint`, `description`, and `details` must be written in natural Portuguese.
 
 Critical safety rules:
 1. Never include the answer word in the hint.
@@ -70,17 +70,17 @@ Quality standard:
 
 Good example:
 {
-  "word": "brun",
-  "hint": "Couleur du chocolat",
-  "description": "C'est une couleur chaude et sombre souvent vue dans le bois, la terre et le cafe.",
-  "details": "Le brun est frequent dans la nature et va des tons clairs aux tons fonces."
+  "word": "marrom",
+  "hint": "Cor do chocolate",
+  "description": "E uma cor quente e escura comum na madeira, na terra e no cafe.",
+  "details": "O marrom aparece com frequencia na natureza e varia de tons claros a tons escuros."
 }
 
 Bad example:
 {
-  "word": "mois",
-  "hint": "Periode en laquelle l'annee est divisee historiquement",
-  "description": "Periode en laquelle une annee est divisee, historiquement basee sur les phases de la lune."
+  "word": "mes",
+  "hint": "Periodo em que o ano e dividido historicamente",
+  "description": "Periodo em que um ano e dividido, historicamente baseado nas fases da lua."
 }
 
 The bad example is too mechanical, too literal, and not polished enough.
@@ -156,11 +156,11 @@ def normalize_text(text: str) -> str:
     return text
 
 
-def normalize_french_word(word: str) -> str:
+def normalize_portuguese_word(word: str) -> str:
     w = normalize_text(str(word)).lower()
     if not w:
         return ""
-    w = w.replace("œ", "oe").replace("æ", "ae")
+    # Portuguese-friendly ASCII normalization.
     w = unicodedata.normalize("NFD", w)
     w = "".join(ch for ch in w if unicodedata.category(ch) != "Mn")
     return w
@@ -240,9 +240,9 @@ def ensure_details(value: str, fallback_description: str) -> str:
 
     description = ensure_period(normalize_text(fallback_description))
     if description:
-        return f"{description} Ce terme est souvent utilise dans des jeux educatifs de mots."
+        return f"{description} Este termo e usado com frequencia em jogos educativos de palavras."
 
-    return "Aucun contexte educatif supplementaire n'est disponible."
+    return "Nao ha contexto educativo adicional disponivel."
 
 
 def details_quality_score(text: str) -> int:
@@ -260,7 +260,7 @@ def details_quality_score(text: str) -> int:
     lowered = cleaned.lower()
     if "general educational context is not available" in lowered:
         score -= 100
-    if "aucun contexte educatif supplementaire n'est disponible" in lowered:
+    if "nao ha contexto educativo adicional disponivel" in lowered:
         score -= 100
 
     return score
@@ -286,14 +286,14 @@ def fallback_details_from_entry(word: str, category: str, description: str) -> s
     normalized_word = normalize_text(word)
 
     if normalized_description and normalized_category:
-        return f"{normalized_description} Ce terme est souvent utilise dans des jeux educatifs de mots de la categorie {normalized_category}."
+        return f"{normalized_description} Este termo e usado com frequencia em jogos educativos de palavras da categoria {normalized_category}."
     if normalized_description:
-        return f"{normalized_description} Ce terme est souvent utilise dans des jeux educatifs de mots."
+        return f"{normalized_description} Este termo e usado com frequencia em jogos educativos de palavras."
     if normalized_category:
-        return f"Ce terme appartient au vocabulaire de {normalized_category} et apparait dans des jeux educatifs de mots."
+        return f"Este termo pertence ao vocabulario de {normalized_category} e aparece em jogos educativos de palavras."
     if normalized_word:
-        return f"Ce terme se refere a {normalized_word} et apparait souvent dans des jeux educatifs de mots."
-    return "Aucun contexte educatif supplementaire n'est disponible."
+        return f"Este termo se refere a {normalized_word} e aparece com frequencia em jogos educativos de palavras."
+    return "Nao ha contexto educativo adicional disponivel."
 
 
 def choose_details(word: str, category: str, description: str, original_details: str, candidate_details: str) -> str:
@@ -313,7 +313,7 @@ def choose_details(word: str, category: str, description: str, original_details:
 
 def ensure_details_last(entry: Dict[str, Any]) -> Dict[str, Any]:
     finalized = dict(entry)
-    finalized["normalizedWord"] = normalize_french_word(str(finalized.get("word", "")))
+    finalized["normalizedWord"] = normalize_portuguese_word(str(finalized.get("word", "")))
     existing_details = finalized.pop("details", "")
     finalized["details"] = clean_details(str(existing_details))
     if not finalized["details"]:
@@ -390,15 +390,15 @@ Return JSON only with this structure:
 Instructions:
 - Keep `index`, `word`, `difficulty`, and `category` unchanged.
 - Rewrite only `hint`, `description`, and `details`.
-- Input words and source content are in French.
-- Final `hint`, `description`, and `details` must be in natural French.
+- Input words and source content are in Portuguese.
+- Final `hint`, `description`, and `details` must be in natural Portuguese.
 - `hint` must be short, natural, and clue-like.
 - `description` must be exactly 1 sentence.
 - `details` must be 1 or 2 short educational sentences.
 - `hint` must not contain the answer word.
 - `description` must not contain the answer word.
 - Avoid awkward dictionary-style phrasing.
-- Use clear, polished, human-sounding French.
+- Use clear, polished, human-sounding Portuguese.
 - Keep the meaning accurate.
 - Do not invent uncertain facts.
 - If the original entry is weak, improve it significantly for fluency and UX.

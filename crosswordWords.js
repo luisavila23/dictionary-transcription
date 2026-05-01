@@ -11,7 +11,7 @@ const CONFIG = {
 
 const EXCLUDE_PATTERNS = [
   /^\p{Lu}/u,
-  /[^a-záéíóúü]/i,
+  /[^a-záàâãçéêíóôõúü]/i,
   /(.)\1{2,}/,
 ];
 
@@ -68,29 +68,29 @@ class WiktionaryParser {
     return true;
   }
 
-  extractFrenchSection(text) {
+  extractPortugueseSection(text) {
     return text.match(
-      /(?:^|\n)==\s*(?:\{\{\s*langue\s*\|\s*fr\s*\}\}|français|french)\s*==\s*\n([\s\S]*?)(?=\n==[^=\n]+==\s*\n|$)/i,
+      /(?:^|\n)={1,2}\s*(?:\{\{\s*-pt-\s*\}\}|\{\{\s*langue\s*\|\s*pt\s*\}\}|portugu[eê]s|portuguese)\s*={1,2}\s*\n([\s\S]*?)(?=\n={1,2}[^=\n]+={1,2}\s*\n|$)/i,
     );
   }
 
-  extractPOSSection(frenchSection) {
-    return frenchSection.match(
-      /(?:^|\n)={3,4}\s*\{\{\s*S\s*\|\s*((?:nom(?:\s+propre)?|verbe|adjectif|adverbe|pronom|préposition|conjonction))\b[^}]*\|\s*fr\b[^}]*\}\}\s*={3,4}\s*\n([\s\S]*?)(?=\n={3,4}\s*|$)/i,
+  extractPOSSection(portugueseSection) {
+    return portugueseSection.match(
+      /(?:^|\n)(?:={2,4}\s*(?:\{\{\s*S\s*\|\s*((?:nom(?:\s+propre)?|verbe|adjectif|adverbe|pronom|préposition|conjonction))\b[^}]*\|\s*pt\b[^}]*\}\}|((?:Substantivo(?:\s+próprio)?|Verbo|Adjetivo|Advérbio|Pronome|Preposição|Conjunção)))\s*={2,4}|==\s*\{\{\s*(Substantivo|Verbo|Adjetivo|Advérbio|Pronome|Preposição|Conjunção)\s*\|\s*pt\s*\}\}\s*==)\s*\n([\s\S]*?)(?=\n={2,4}\s*|$)/i,
     );
   }
 
   tokenize(text) {
-    return (text.toLowerCase().match(/[a-záéíóúüñ]+/gi) || []).filter(Boolean);
+    return (text.toLowerCase().match(/[a-záàâãçéêíóôõúü]+/gi) || []).filter(Boolean);
   }
 
-  hasFrenchUsageExclusion(frenchSection) {
+  hasPortugueseUsageExclusion(portugueseSection) {
     return (
-      /\{\{(?:vieilli|archaïque|désuet|rare|dialectal|familier|informel|argot|vulgaire)\|fr\}\}/i.test(
-        frenchSection,
+      /\{\{(?:arca[ií]smo|obsoleto|desusado|raro|regionalismo|dialetal|coloquial|informal|g[íi]ria|vulgar)\|pt\}\}/i.test(
+        portugueseSection,
       ) ||
-      /\{\{(?:vieilli|archaïque|désuet|rare|dialectal|familier|informel|argot|vulgaire)\b/i.test(
-        frenchSection,
+      /\{\{(?:arca[ií]smo|obsoleto|desusado|raro|regionalismo|dialetal|coloquial|informal|g[íi]ria|vulgar)\b/i.test(
+        portugueseSection,
       )
     );
   }
@@ -282,20 +282,20 @@ class WiktionaryParser {
   parseWikitext(title, text) {
     if (!text || typeof text !== "string") return null;
 
-    const frenchMatch = this.extractFrenchSection(text);
-    if (!frenchMatch) return null;
+    const portugueseMatch = this.extractPortugueseSection(text);
+    if (!portugueseMatch) return null;
 
-    const frenchSection = frenchMatch[1];
+    const portugueseSection = portugueseMatch[1];
 
-    if (this.hasFrenchUsageExclusion(frenchSection)) {
+    if (this.hasPortugueseUsageExclusion(portugueseSection)) {
       return null;
     }
 
-    const posMatch = this.extractPOSSection(frenchSection);
+    const posMatch = this.extractPOSSection(portugueseSection);
     if (!posMatch) return null;
 
-    const partOfSpeech = posMatch[1];
-    const definitionSection = posMatch[2];
+    const partOfSpeech = posMatch[1] || posMatch[2] || posMatch[3];
+    const definitionSection = posMatch[4];
     const definitionLine = this.extractDefinitionLine(definitionSection);
     if (!definitionLine) return null;
 
@@ -434,7 +434,7 @@ async function main() {
     console.log("  node crosswordWords.js dump.xml");
     console.log("  node crosswordWords.js dump.xml 100");
     console.log("\nYou can download the dump from:");
-    console.log("https://dumps.wikimedia.org/enwiktionary/latest/");
+    console.log("https://dumps.wikimedia.org/ptwiktionary/latest/");
     process.exit(1);
   }
 
