@@ -1,0 +1,386 @@
+{
+  "input_file": "C:\\Users\\LuisM\\Documents\\scripts\\scripts\\es-dataset-test.json",
+  "output_file": "C:\\Users\\LuisM\\Documents\\scripts\\scripts\\cleaned\\es.cleaned.json",
+  "language": "Spanish",
+  "mode": "aggressive",
+  "total_records": 11,
+  "suspicious_records": 11,
+  "records_sent_to_api": 11,
+  "records_changed": 11,
+  "records_unchanged": 0,
+  "api_batches_completed": 1,
+  "api_batches_failed": 0,
+  "changes": [
+    {
+      "index": 0,
+      "word": "aarónico",
+      "issue_reasons": [
+        "category_other_but_obvious"
+      ],
+      "fields_requested_for_rewrite": [
+        "category",
+        "description",
+        "details",
+        "hint"
+      ],
+      "fields_changed": [
+        "description",
+        "details",
+        "hint"
+      ],
+      "old_values": {
+        "description": "Se refiere a lo concerniente a la línea sacerdotal que desciende de un importante personaje bíblico del Éxodo.",
+        "details": "El término alude a la casta sacerdotal del antiguo Israel, cuyos miembros eran los únicos autorizados a oficiar en el Tabernáculo.",
+        "hint": "Relativo al sumo sacerdocio hebreo"
+      },
+      "new_values": {
+        "description": "Relativo a la línea sacerdotal que desciende de Aarón, hermano de Moisés en la tradición bíblica.",
+        "details": "Término que alude a la casta sacerdotal del antiguo Israel, cuyos miembros oficiaban en el Tabernáculo.",
+        "hint": "Linaje sacerdotal del Éxodo"
+      },
+      "api_called": true,
+      "correction_applied": true,
+      "skipped_reason": null,
+      "validation_rejections": [
+        "invalid_category_reverted"
+      ]
+    },
+    {
+      "index": 1,
+      "word": "aaronita",
+      "issue_reasons": [
+        "category_other_but_obvious"
+      ],
+      "fields_requested_for_rewrite": [
+        "category",
+        "description",
+        "details",
+        "hint"
+      ],
+      "fields_changed": [
+        "description",
+        "details",
+        "hint"
+      ],
+      "old_values": {
+        "description": "Persona que pertenece a una casta sacerdotal de la antigua Israel.",
+        "details": "Los aaronitas eran descendientes de un destacado líder religioso y los encargados del culto en el templo.",
+        "hint": "Miembro de la tribu sacerdotal hebrea"
+      },
+      "new_values": {
+        "description": "Persona que pertenece a la casta sacerdotal descendiente de Aarón en el antiguo Israel.",
+        "details": "Los aaronitas eran los encargados del culto en el templo.",
+        "hint": "Descendiente de un sumo sacerdote bíblico"
+      },
+      "api_called": true,
+      "correction_applied": true,
+      "skipped_reason": null,
+      "validation_rejections": [
+        "invalid_category_reverted"
+      ]
+    },
+    {
+      "index": 2,
+      "word": "abab",
+      "issue_reasons": [
+        "category_other_needs_review"
+      ],
+      "fields_requested_for_rewrite": [
+        "category",
+        "description",
+        "details",
+        "hint"
+      ],
+      "fields_changed": [
+        "description",
+        "hint"
+      ],
+      "old_values": {
+        "description": "Era un remero libre de origen turco que trabajaba en embarcaciones de guerra cuando faltaban prisioneros para esa labor.",
+        "hint": "Remero voluntario en galeras otomanas"
+      },
+      "new_values": {
+        "description": "Remero libre de origen turco que trabajaba en galeras de guerra cuando faltaban prisioneros.",
+        "hint": "Remero asalariado en galeras turcas"
+      },
+      "api_called": true,
+      "correction_applied": true,
+      "skipped_reason": null,
+      "validation_rejections": [
+        "invalid_category_reverted"
+      ]
+    },
+    {
+      "index": 3,
+      "word": "ababa",
+      "issue_reasons": [
+        "risky_details",
+        "category_other_but_obvious"
+      ],
+      "fields_requested_for_rewrite": [
+        "category",
+        "description",
+        "details",
+        "hint"
+      ],
+      "fields_changed": [
+        "description",
+        "details",
+        "hint"
+      ],
+      "old_values": {
+        "description": "Es una planta anual que crece en campos de cultivo y sus flores se usan en ornamentación.",
+        "details": "Su color vibrante la hace popular en jardines y también tiene usos en fitoterapia tradicional.",
+        "hint": "Flor silvestre de pétalos rojo intenso"
+      },
+      "new_values": {
+        "description": "Planta anual que crece en campos de cultivo y produce flores de color rojo intenso usadas en ornamentación.",
+        "details": "Su color vibrante la hace popular en jardines.",
+        "hint": "Planta silvestre de flor roja"
+      },
+      "api_called": true,
+      "correction_applied": true,
+      "skipped_reason": null,
+      "validation_rejections": [
+        "invalid_category_reverted"
+      ]
+    },
+    {
+      "index": 4,
+      "word": "ababán",
+      "issue_reasons": [
+        "category_other_but_obvious"
+      ],
+      "fields_requested_for_rewrite": [
+        "category",
+        "description",
+        "details",
+        "hint"
+      ],
+      "fields_changed": [
+        "description",
+        "hint"
+      ],
+      "old_values": {
+        "description": "Es una especie arbórea de las regiones tropicales de América que contiene altos niveles de taninos.",
+        "hint": "Árbol americano rico en taninos"
+      },
+      "new_values": {
+        "description": "Especie arbórea de regiones tropicales de América con alto contenido de taninos.",
+        "hint": "Árbol tropical con taninos"
+      },
+      "api_called": true,
+      "correction_applied": true,
+      "skipped_reason": null,
+      "validation_rejections": [
+        "invalid_category_reverted"
+      ]
+    },
+    {
+      "index": 5,
+      "word": "ababillarse",
+      "issue_reasons": [
+        "hint_description_too_similar",
+        "description_repeats_hint",
+        "risky_details",
+        "category_other_but_obvious"
+      ],
+      "fields_requested_for_rewrite": [
+        "category",
+        "description",
+        "details",
+        "hint"
+      ],
+      "fields_changed": [
+        "description",
+        "details",
+        "hint"
+      ],
+      "old_values": {
+        "description": "Es una afección que provoca inflamación en la babilla, una articulación de los equinos.",
+        "details": "También puede referirse a padecer paperas o inflamación de las glándulas salivales en algunas regiones.",
+        "hint": "Padecer inflamación de la articulación en caballos"
+      },
+      "new_values": {
+        "description": "Afección que provoca inflamación en la babilla, una articulación de los caballos.",
+        "details": "También puede referirse a padecer paperas en algunas regiones.",
+        "hint": "Inflamación equina en la babilla"
+      },
+      "api_called": true,
+      "correction_applied": true,
+      "skipped_reason": null,
+      "validation_rejections": [
+        "invalid_category_reverted"
+      ]
+    },
+    {
+      "index": 6,
+      "word": "ababol",
+      "issue_reasons": [
+        "risky_details",
+        "category_other_but_obvious"
+      ],
+      "fields_requested_for_rewrite": [
+        "category",
+        "description",
+        "details",
+        "hint"
+      ],
+      "fields_changed": [
+        "description",
+        "details",
+        "hint"
+      ],
+      "old_values": {
+        "description": "Produce llamativas flores de color rojo intenso y es común en prados y bordes de caminos.",
+        "details": "Conocida también como amapola silvestre, el ababol es símbolo de la flora rural y tiene usos ornamentales.",
+        "hint": "Hierba de campo con flores escarlata"
+      },
+      "new_values": {
+        "description": "Planta que produce llamativas flores rojas, común en prados y bordes de caminos.",
+        "details": "Conocida también como amapola silvestre.",
+        "hint": "Flor silvestre de campos"
+      },
+      "api_called": true,
+      "correction_applied": true,
+      "skipped_reason": null,
+      "validation_rejections": [
+        "invalid_category_reverted"
+      ]
+    },
+    {
+      "index": 7,
+      "word": "ababuy",
+      "issue_reasons": [
+        "category_other_but_obvious"
+      ],
+      "fields_requested_for_rewrite": [
+        "category",
+        "description",
+        "details",
+        "hint"
+      ],
+      "fields_changed": [
+        "description",
+        "details",
+        "hint"
+      ],
+      "old_values": {
+        "description": "Es un arbusto silvestre con espinas que produce frutos similares a pequeñas ciruelas.",
+        "details": "El ababuy crece en zonas áridas y sus frutos, aunque ácidos, son comestibles y se usan en conservas.",
+        "hint": "Arbusto espinoso parecido al ciruelo"
+      },
+      "new_values": {
+        "description": "Arbusto silvestre con espinas que produce frutos similares a pequeñas ciruelas.",
+        "details": "Crece en zonas áridas y sus frutos, aunque ácidos, son comestibles.",
+        "hint": "Arbusto espinoso de frutos pequeños"
+      },
+      "api_called": true,
+      "correction_applied": true,
+      "skipped_reason": null,
+      "validation_rejections": [
+        "invalid_category_reverted"
+      ]
+    },
+    {
+      "index": 8,
+      "word": "abacá",
+      "issue_reasons": [
+        "category_other_but_obvious"
+      ],
+      "fields_requested_for_rewrite": [
+        "category",
+        "description",
+        "details",
+        "hint"
+      ],
+      "fields_changed": [
+        "description",
+        "details",
+        "hint"
+      ],
+      "old_values": {
+        "description": "Es una planta perenne de cuyas hojas se extrae una fibra textil muy resistente.",
+        "details": "El abacá, también llamado cáñamo de Manila, es nativo de Filipinas y su fibra se usa en cordelería naval.",
+        "hint": "Planta tropical de la familia del banano"
+      },
+      "new_values": {
+        "description": "Planta perenne de cuyas hojas se extrae una fibra textil muy resistente.",
+        "details": "También llamado cáñamo de Manila, nativo de Filipinas, su fibra se usa en cordelería naval.",
+        "hint": "Fibra textil de una planta tropical"
+      },
+      "api_called": true,
+      "correction_applied": true,
+      "skipped_reason": null,
+      "validation_rejections": [
+        "invalid_category_reverted"
+      ]
+    },
+    {
+      "index": 9,
+      "word": "abacalero",
+      "issue_reasons": [
+        "category_other_but_obvious"
+      ],
+      "fields_requested_for_rewrite": [
+        "category",
+        "description",
+        "details",
+        "hint"
+      ],
+      "fields_changed": [
+        "description",
+        "details",
+        "hint"
+      ],
+      "old_values": {
+        "description": "Persona que se dedica al cultivo, transporte o venta de una fibra vegetal usada en cordelería.",
+        "details": "El abacalero está vinculado a la industria del cáñamo de Manila, una fibra muy valorada por su durabilidad.",
+        "hint": "Comerciante de fibra textil tropical"
+      },
+      "new_values": {
+        "description": "Persona que se dedica al cultivo, transporte o venta de la fibra del abacá.",
+        "details": "Vinculado a la industria del cáñamo de Manila, fibra valorada por su durabilidad.",
+        "hint": "Vendedor de fibra de cáñamo de Manila"
+      },
+      "api_called": true,
+      "correction_applied": true,
+      "skipped_reason": null,
+      "validation_rejections": [
+        "invalid_category_reverted"
+      ]
+    },
+    {
+      "index": 10,
+      "word": "abacanado",
+      "issue_reasons": [
+        "category_other_but_obvious"
+      ],
+      "fields_requested_for_rewrite": [
+        "category",
+        "description",
+        "details",
+        "hint"
+      ],
+      "fields_changed": [
+        "description",
+        "hint"
+      ],
+      "old_values": {
+        "description": "Se aplica a alguien que ha mejorado su situación financiera y ha acumulado más bienes.",
+        "hint": "Que ha prosperado económicamente"
+      },
+      "new_values": {
+        "description": "Se aplica a alguien que ha mejorado su situación financiera y acumulado más bienes.",
+        "hint": "Que ha mejorado su posición económica"
+      },
+      "api_called": true,
+      "correction_applied": true,
+      "skipped_reason": null,
+      "validation_rejections": [
+        "invalid_category_reverted"
+      ]
+    }
+  ],
+  "errors": []
+}
